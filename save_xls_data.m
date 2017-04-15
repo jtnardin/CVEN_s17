@@ -6,20 +6,29 @@ nx = 5;
 x_range = 1:nx;
 y_range = 1:ny;
 
-B_05 = cell(ny,nx);
 
-count = 1;
+for k = 1:6
+    for l = 2:5
 
-for i = y_range
-    for j = x_range
-                
-        B_05{i,j} = PF_write(['B05_' num2str(count)]);
+
+
+        A = cell(ny,nx);
+
+        count = 1;
+
+        for i = y_range
+            for j = x_range
+
+                A{i,j} = PF_write([char(k+65) '0' num2str(l) '_' num2str(count)]);
+
+                count = count + 1;
+
+            end
+
+        end
+
+
+        save([char(k+65) '0' num2str(l) '_large.mat'])
         
-        count = count + 1;
-   
     end
-   
 end
-
-
-save B05_PF_data.mat
